@@ -10,7 +10,8 @@ export const StartScreen = observer(() => {
     const [title, setTitle] = useState<undefined | string>(undefined);
 
     useContact(({ from, phoneNumber }) => {
-        findUser(`+${phoneNumber}`)
+
+        findUser(`+${phoneNumber?.replace(/\+/g, '')}`)
             .then(async (user) => {
                 if (user) {
                     try {
